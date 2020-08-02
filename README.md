@@ -1,2 +1,2 @@
-# shopsite
+# Shop Store
 Shopping Site
