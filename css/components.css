@@ -33,7 +33,5 @@
 }
 .primary-button:hover {
   font-weight: 600;
-  color: rgba(87, 184, 70);
-  background: #fff;
-  border: 1px solid rgba(87, 184, 70);
+  background: #49a539;
 }
