@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Shop Site
+        </title>
+        <link href="css/lib/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="css/lib/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css"/>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+        <!-- Custom Defined Styles -->
+        <link href="css/general.css" rel="stylesheet" type="text/css"/>
+        <link href="css/components.css" rel="stylesheet" type="text/css"/>
+        <link href="css/login.css" rel="stylesheet" type="text/css"/>
+        <!-- End of Custom Defined Styles -->
+    </head>
+    <body>
+        <!-- Login Section -->
+        <div class="login-section" id="login-section">
+            <div class="login-card">
+                <span class="login-title primary-title-1 mb-30">
+                    Login
+                </span>
+                <div class="inputs-wrap focus-input">
+                    <div class="each-input mb-30">
+                        <input v-model="username" :class="{'has-val' : username.length > 0}" class="username" name="" type="text" value=""/>
+                        <label data-placeholder="Username">
+                            
+                        </label>
+                    </div>
+                    <div class="each-input mb-30">
+                        <input v-model="password" :class="{'has-val' : password.length > 0}" class="password" name="" type="password" value=""/>
+                        <label data-placeholder="Password">
+                        </label>
+                    </div>
+                </div>
+                <div class="bottom-section">
+                    <button class="submit-btn primary-button" @click="login($event)">
+                        Login
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- End of Login section -->
+        <!-- Scripts -->
+        <script src="js/lib/jquery-3.1.1.min.js">
+        </script>
+        <script src="js/lib/axios.min.js">
+        </script>
+        <script src="js/lib/vue.js">
+        </script>
+        <script src="js/lib/mCustomScrollbar.concat.min.js">
+        </script>
+        <script src="js/login.js">
+        </script>
+        <!-- End of Scripts -->
+    </body>
+</html>
