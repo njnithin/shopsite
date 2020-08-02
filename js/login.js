@@ -5,13 +5,25 @@ document.addEventListener("DOMContentLoaded", function() {
     name: "login",
     data: {
       test: "Hello World",
-      username:"",
-      password:""
-
+      username: "",
+      password: ""
     },
     methods: {
       login: function login(event) {
-        alert("\nusername:"+this.username+"\nPassword:"+this.password);
+        var self = this;
+        if (self.username != "" && self.password != "") {
+          axios.post('https://shop-store-backend.herokuapp.com/login', {
+            "username": this.username,
+            "password": this.password
+          }).then(function(response) {
+            console.log(response.data);
+          }).catch(function(error) {
+            console.log(error);
+          });
+        }
+        else{
+        	alert("Please Fill")
+        }
       }
     },
     created: function created() {
