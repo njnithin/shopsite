@@ -8,6 +8,7 @@
         <link href="css/lib/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
         <!-- Custom Defined Styles -->
+        <link href="css/animations.css" rel="stylesheet" type="text/css"/>
         <link href="css/general.css" rel="stylesheet" type="text/css"/>
         <link href="css/components.css" rel="stylesheet" type="text/css"/>
         <link href="css/login.css" rel="stylesheet" type="text/css"/>
@@ -15,32 +16,71 @@
     </head>
     <body>
         <!-- Login Section -->
-        <div class="login-section" id="login-section">
-            <div class="login-card">
+        <div class="login-section" id="login-section" v-cloak="" v-if="notLoggedIn">
+            <!-- Site Loader -->
+            <div class="site-loader" v-if="loaderFlag">
+                <svg height="38" viewbox="0 0 38 38" width="38" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <lineargradient id="a" x1="8.042%" x2="65.682%" y1="0%" y2="23.865%">
+                            <stop offset="0%" stop-color="#fff" stop-opacity="0">
+                            </stop>
+                            <stop offset="63.146%" stop-color="#fff" stop-opacity=".631">
+                            </stop>
+                            <stop offset="100%" stop-color="#fff">
+                            </stop>
+                        </lineargradient>
+                    </defs>
+                    <g fill="none" fill-rule="evenodd">
+                        <g transform="translate(1 1)">
+                            <path d="M36 18c0-9.94-8.06-18-18-18" id="Oval-2" stroke="url(#a)" stroke-width="2">
+                                <animatetransform attributename="transform" dur="0.9s" from="0 18 18" repeatcount="indefinite" to="360 18 18" type="rotate">
+                                </animatetransform>
+                            </path>
+                            <circle cx="36" cy="18" fill="#fff" r="1">
+                                <animatetransform attributename="transform" dur="0.9s" from="0 18 18" repeatcount="indefinite" to="360 18 18" type="rotate">
+                                </animatetransform>
+                            </circle>
+                        </g>
+                    </g>
+                </svg>
+            </div>
+            <!-- End of Site Loader -->
+            <div :class="{'shake' : shakeCard === true , 'login-error': loginError}" class="login-card">
                 <span class="login-title primary-title-1 mb-30">
                     Login
                 </span>
                 <div class="inputs-wrap focus-input">
                     <div class="each-input mb-30">
-                        <input v-model="username" :class="{'has-val' : username.length > 0}" class="username" name="" type="text" value=""/>
+                        <input :class="{'has-val' : username.length > 0 , 'error': emptyCheck && username.length === 0  }" class="username" name="" type="text" v-model="username" v-on:keyup.enter="login($event)" value=""/>
                         <label data-placeholder="Username">
-                            
                         </label>
                     </div>
                     <div class="each-input mb-30">
-                        <input v-model="password" :class="{'has-val' : password.length > 0}" class="password" name="" type="password" value=""/>
+                        <input :class="{'has-val' : password.length > 0 , 'error': emptyCheck && password.length === 0 }" class="password" name="" type="password" v-model="password" v-on:keyup.enter="login($event)" value=""/>
                         <label data-placeholder="Password">
                         </label>
                     </div>
                 </div>
                 <div class="bottom-section">
-                    <button class="submit-btn primary-button" @click="login($event)">
+                    <button @click="login($event)" class="submit-btn primary-button">
                         Login
                     </button>
                 </div>
             </div>
         </div>
         <!-- End of Login section -->
+        <!-- Login Success -->
+        <div id="other-pages">
+            <div class="other-pages-wrapper" v-if="noAccess === false ">
+                <div class="container">
+                    <div style="display: flex;flex-wrap: wrap;align-items: center;justify-content: center;margin-top: 100px;">
+                        <img alt="Welcome" src="https://t3.ftcdn.net/jpg/02/20/14/38/240_F_220143804_fc4xRygvJ8bn8JPQumtHJieDN4ORNyjs.jpg">
+                        </img>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End of Login Success -->
         <!-- Scripts -->
         <script src="js/lib/jquery-3.1.1.min.js">
         </script>

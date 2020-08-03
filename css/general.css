@@ -82,6 +82,20 @@ input, button {
   outline: 0 !important;
   border: 0;
 }
+[v-cloak] > * { display:none }
+.site-loader {
+  background: rgba(0, 0, 0,0.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
 .each-input {
   position: relative;
   border-bottom: 2px solid #d9d9d9;
@@ -113,6 +127,14 @@ input, button {
   -moz-transition: all .4s;
   transition: all .4s;
 }
+.focus-input input:focus+label:before,
+.focus-input input.error+label:before {
+  width: 100%;
+}
+.focus-input input.has-val+label:after,
+.focus-input input:focus+label:after {
+  bottom: 30px;
+}
 .focus-input label:before {
   content: "";
   display: block;
@@ -127,11 +149,9 @@ input, button {
   transition: all 0.4s;
   background: #57b846;
 }
-.focus-input input:focus+label:before {
-  width: 100%;
+.focus-input input.error+label:before{
+  background: red;
+  height: 1px;
 }
-.focus-input input.has-val+label:after,
-.focus-input input:focus+label:after {
-  bottom: 30px;
-}
+
 /* End of General Styles */

@@ -13,6 +13,12 @@
 
 /* Buttons */
 
+.shake {
+  animation: shake 1s cubic-bezier(.36, .07, .19, .97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
 .primary-button {
   text-transform: uppercase;
   display: flex;
@@ -32,6 +38,5 @@
   transition: all 0.6s ease;
 }
 .primary-button:hover {
-  font-weight: 600;
-  background: #49a539;
+  background: #289615;
 }
